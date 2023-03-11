@@ -31,14 +31,17 @@
     width: 1px;
   }
 
-  body {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    line-height: 1.6;
-    background-image: url(../img/mars.jpg);
-    background-size: cover;
-    color: var(--clr-light);
-    min-height: 100vh;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
+  background-image: url(../img/mars.jpg);
+  background-size: cover;
+  color: var(--clr-light);
+  height: 100vh;
+  overflow: hidden;
 } 
 
 h1, h2, h3 { line-height: 1 }
@@ -209,20 +212,22 @@ input {
 
 .previous-weather {
   background: var(--clr-light);
-  color: var(--clr-accent-dark);
+  color: var(--clr-dark);
   position: absolute;
   bottom: 0;
   width: 100%;
-  transform: rotateY(60%);
+  transform: translateY(60%);
   transition: transform 350ms ease;
+  padding: 3rem;
+  height: 35%;
 }
 
-.show-previous-weather-label {
+.show-previous-weather {
   position: absolute;
   background: var(--clr-accent);
   left: 50%;
   width: 10rem;
-  transform: translate(-50%, -100%);
+  transform: translate(-50%, calc(-100% - 3rem));
   text-align: center;
   font-size: var(--fs-h2);
   line-height: 1;
@@ -233,8 +238,8 @@ input {
   font-family: inherit;
 }
 
-.show-previous-weather-label:hover,
-.show-previous-weather-label:focus {
+.show-previous-weather:hover,
+.show-previous-weather:focus {
   color: var(--clr-gray);
 }
 
@@ -243,6 +248,21 @@ input {
   display: flex;
 }
 
-.previous-weather {
+.show-weather {
+  transform: translateY(60%);
+}
+
+.show-weather .previous-weather {
   transform: translateY(0);
+}
+
+.show-previous-weather span {
+  display: block;
+  transform: rotate(0);
+  transition: transform 300ms ease;
+}
+
+.show-weather .previous-weather .show-previous-weather span {
+  display: block;
+  transform: rotate(180deg) translateY(-6px);
 }
